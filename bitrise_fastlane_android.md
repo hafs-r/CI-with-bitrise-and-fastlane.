@@ -2,7 +2,7 @@ Mobile is the world’s biggest computing platform now a days. Not only its reac
 
 I assume you already understand CI and CD and advantageous of automation. if not look at https://opensource.com/article/18/8/what-cicd.
 
-##What is Fastlane
+## What is Fastlane
 
 ![](images/fastlane_banner.png)
 
@@ -18,7 +18,7 @@ https://docs.fastlane.tools/getting-started/android/setup/
 
 Setup the lanes based on your need.
 
-###What all we have in our Fastfile
+### What all we have in our Fastfile
 
 The Fastfile stores the automation configuration that can be run with fastlane.
 The Fastfile has to be inside your ./fastlane directory.
@@ -32,7 +32,7 @@ fastlane_require 'dotenv'
 Follow this link to know how to use dotenv
 http://fastlanescreencast.com/episodes/2-using-dotenv-and-environment-variables-in-fastlane
 
-###How to update lokalise from fastlane
+### How to update lokalise from fastlane
 
 Lokalise is a translation management system built for agile teams wanting to automate their localization processes.
 
@@ -50,7 +50,7 @@ end
 ```
 This will keep the string.xml files updated each time the workflow is updated.
 
-###How to use badge plugin to keep version badge on build.
+### How to use badge plugin to keep version badge on build.
 
 It also use the plugin [badge](https://github.com/HazAT/badge) to update app icon with a version badge.
 
@@ -85,7 +85,7 @@ Gradle is an open-source build automation tool that is designed to be flexible e
     properties: { 'versionCode' => ENV['version_code'].to_i })
 ```
 
-###How to use slack action in fastlane.
+### How to use slack action in fastlane.
 
 Notifying is an important part in CI, slack is a wellknown collaboration workspace and fastlane have inbuilt action available for sharing success or error messages to slack.
 
@@ -99,7 +99,7 @@ slack(
 
 For further reference go to https://docs.fastlane.tools/actions/slack/
 
-###Share build to crashalytics from fastlane
+### Share build to crashalytics from fastlane
 
 Upload a new build to Crashlytics Beta using crashalytics action available in fastlane.
 
@@ -113,7 +113,7 @@ crashlytics(api_token: ENV['fabric_api_token'],
 
 For further reference go to https://docs.fastlane.tools/actions/crashlytics/
 
-###Deploy apk to playstore
+### Deploy apk to playstore
 
 There is an inbuilt action **upload_to_play_store** which deploy to playstore, and it can be used as below. Ofcourse you need to configure Google Playstore API in the project before you are able to use this.
 
@@ -128,7 +128,7 @@ desc 'Deploy a new version to the Google Play'
 For further reference go to https://docs.fastlane.tools/getting-started/android/release-deployment/
 
 
-##Complete fastfile
+## Complete fastfile
 
 ```ruby
 # This file contains the fastlane.tools configuration
@@ -223,7 +223,7 @@ In this example you can find three fastlane lanes created checks,beta and deploy
 
 ``deploy`` is generating a release build and deploying to google play store, We can setup one more steps in any lanes as per the requirement.
 
-#What is Bitrise
+# What is Bitrise
 
 Bitrise is a continuous integration platform focusing mainly on mobile development. Continuous integration (CI) being a commonly accepted practice of merging developer build copies to a shared mainline on a specific schedule. In other words, it is a workflow for version control and copies deployment without losing track of the development process.
 Bitrise allows creating multiple workflows consisting of build steps. One app can have multiple workflows defined for it, as well as the webhooks to specify which workflow is selected for which trigger (webhook). The triggers mapped to workflows initiate builds with predefined workflows.
@@ -233,7 +233,7 @@ I've listed the steps We added in our workflow and mentioned why it is used, but
 
 For further reference and understanding bitrise go to https://devcenter.bitrise.io/getting-started
 
-#Create an app in Bitrise
+# Create an app in Bitrise
 
 - Open Bitrise dashboard, find Add new app button.
 
@@ -251,34 +251,34 @@ We can also setup the incoming webhook from here which trigger the workflow, but
 
 For further understanding please go through https://devcenter.bitrise.io/getting-started/getting-started-with-android-apps/
 
-#What is inside bitrise app
+# What is inside bitrise app
 
 You can find a tab bar at the top.
 
 ![](images/bitrise_dashboard_tabs.png)
 
-##Builds
+## Builds
 Here we monitor each build status, check logs, reports.
 
 ![](images/bitrise_builds.png)
 
 We can click on each build and open to check the logs and other onformations about the build.
 
-##Add-ons
+## Add-ons
 
 To enable bitrise add on features if required.
 
-##Team
+## Team
 
 This is an administration tab to Manage Group and team members.
 
-##Code
+## Code
 
 It manages build trigger api configurations, incoming and outgoing webhooks.
 <img src="images/bitrise_app_code1.png" width="400"/> <br/>
 <img src="images/bitrise_app_code2.png" width="400"/> 
 
-##Setting
+## Setting
 
 Here you can see and update app details like title, repo url and branch.
 
@@ -292,43 +292,43 @@ You can access this value with key **BITRISE_BUILD_NUMBER**
 
 You can also implement build number with your own custom implemntation as a step in bitrise or through fastlane.
 
-##Workflow
+## Workflow
 
 It open a new tab menu with **Workflows, Code Signing, Secrets, Env Vars, Triggers, Stack and bitrise.yml**
 
-###Code Signing
+### Code Signing
 
 We can utilise this area to keep Android Keystore file and other generic files if any.
 
 ![](images/bitrise_sign.png)
 
-###Secrets
+### Secrets
 
 We can use it to store private variables, like API keys and secrets or any other credentials.
 
 ![](images/bitrise_secrets.png)
 
-###Env Vars
+### Env Vars
 
 App Environment Variables will also be available in builds triggered by pull requests. You should NOT add any private information here.
 
 ![](images/bitrise_env.png)
 
-###Triggers
+### Triggers
 
 You can map a workflow for push, pull and tag as you require.
 
 ![](images/bitrise_trigger.png)
 
-###Stack
+### Stack
 
 There are different stacks for iOS build, Android build.There are Hybrid Stacks which build iOS as well as android. Different environment can be set for different workflows.
 
-###bitrise.yml
+### bitrise.yml
 
 All workflows are saved to a bitrise.yml file, that can be edited from here directly with this yml editor, also you can download this YML and run it directly with bitrise CLI locally.
 
-###Workflows
+### Workflows
 
 The **Workflows** tab allows you to modify the steps, tools, and apps you'd like to use for each build process. When creating an app, Bitrise generates **primary**and **deploy** workflows by default, we can use as it is or customise it.
 
@@ -355,19 +355,19 @@ Pass below package name as input as it is a dependency for badge.
  libcurl4-openssl-dev
  ```
 
-###Activate SSH key (RSA private key) Step
+### Activate SSH key (RSA private key) Step
 
 This added by default when you finish create app step in bitrise, that you add SSH key in bitrise to give access to the repository.
 
 ![](images/ssh_banner.png)
 
-###Git Clone Repository Step
+### Git Clone Repository Step
 
 This step clone the configured project to bitrise when the flow run, added when you finish your app configuration.
 
 ![](images/git_banner.png)
 
-###Bitrise.io Cache:Pull Step
+### Bitrise.io Cache:Pull Step
 
 It is for caching the build to reduce cyclic process when not required.
 
